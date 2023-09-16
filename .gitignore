@@ -1,2 +1,6 @@
-/target
-/Cargo.lock
+# direnv
+.direnv
+
+# Rust
+debug/
+target/
