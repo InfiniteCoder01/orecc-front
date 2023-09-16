@@ -1,0 +1,12 @@
+[package]
+name = "orecc-front"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+xid = ["dep:unicode-ident"]
+
+[dependencies]
+utf8-chars = "3.0.1"
+lazy-regex = { version = "3.0.1", features = ["std"] }
+unicode-ident = { version = "1.0.11", optional = true }
