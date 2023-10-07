@@ -42,8 +42,8 @@ impl TokenReader {
     }
 
     /// Takes characters and adds then to the buffer while predicate
-    pub fn next_token(&mut self, pred: impl Fn(char) -> bool, prefix: char) -> String {
-        let mut buffer = prefix.to_string();
+    pub fn next_token(&mut self, pred: impl Fn(char) -> bool, prefix: impl Into<String>) -> String {
+        let mut buffer = prefix.into();
         while let Some(char) = self.next_char_if(&pred) {
             buffer.push(char);
         }
