@@ -1,5 +1,5 @@
-use codespan_reporting::diagnostic::Label;
-use orecc_front::{chars, Codebase, Diagnostic, TokenReader};
+use codespan_reporting::diagnostic::*;
+use orecc_front::{chars, Codebase, TokenReader};
 
 pub fn main() {
     let args = std::env::args().collect::<Vec<_>>();
