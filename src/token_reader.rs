@@ -1,4 +1,5 @@
 /// A simple character reader that is useful for creating lexers
+#[derive(Debug)]
 pub struct TokenReader {
     source: std::rc::Rc<str>,
 
