@@ -3,7 +3,7 @@ use codespan_reporting::files::{Error, SimpleFile};
 use std::rc::Rc;
 
 /// Codebase. A struct that holds all your code in memory (codespan forces this)
-#[derive(Debug)]
+#[derive(Debug, Default)]
 pub struct Codebase {
     config: codespan_reporting::term::Config,
     files: Vec<SimpleFile<String, Rc<str>>>,
@@ -14,12 +14,7 @@ pub struct Codebase {
 impl Codebase {
     /// Create a new codebase.
     pub fn new() -> Self {
-        Self {
-            config: codespan_reporting::term::Config::default(),
-            files: Vec::new(),
-            errors: 0,
-            warnings: 0,
-        }
+        Self::default()
     }
 
     /// Add a file to the codebase, returning the handle that can be used to
@@ -51,6 +46,10 @@ impl Codebase {
             .expect("internal error");
     }
 
+    pub fn files(&self) -> &Vec<SimpleFile<String, Rc<str>>> {
+        &self.files
+    }
+
     /// Get the number of errors emitted
     pub fn errors(&self) -> usize {
         self.errors
@@ -65,12 +64,6 @@ impl Codebase {
     pub fn clear(&mut self) {
         self.warnings = 0;
         self.errors = 0;
-    }
-}
-
-impl Default for Codebase {
-    fn default() -> Self {
-        Self::new()
     }
 }
 

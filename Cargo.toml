@@ -1,6 +1,6 @@
 [package]
 name = "orecc-front"
-version = "0.1.5"
+version = "0.1.6"
 edition = "2021"
 authors = ["InfiniteCoder <nayka.0.lobach.01@gmail.com>"]
 description = "A simple compiler frontend utility toolkit"
