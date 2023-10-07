@@ -7,6 +7,6 @@ edition = "2021"
 xid = ["dep:unicode-ident"]
 
 [dependencies]
-utf8-chars = "3.0.1"
-lazy-regex = { version = "3.0.1", features = ["std"] }
+lazy-regex = { version = "3.0.1" }
 unicode-ident = { version = "1.0.11", optional = true }
+codespan-reporting = "0.11.1"

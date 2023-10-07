@@ -1,6 +1,13 @@
-pub mod chacacter_buffer;
+/// Checking characters to be a part of ident, start of ident, etc.
 pub mod chars;
-pub use chacacter_buffer::{CharacterBuffer, Cursor};
+/// Codebase. A struct that holds all your code in memory (codespan forces this)
+pub mod codebase;
+/// A simple character reader that is useful for creating lexers
+pub mod token_reader;
+
+pub use codebase::Codebase;
+pub use codespan_reporting::diagnostic::Diagnostic;
+pub use token_reader::TokenReader;
 
 #[cfg(test)]
 mod tests {
@@ -9,19 +16,17 @@ mod tests {
     #[test]
     fn test_character_buffer() {
         let data = "Awesome\ndemo";
-        let mut source = CharacterBuffer::new(std::io::Cursor::new(data));
+        let mut source = TokenReader::new(std::rc::Rc::from(data));
         assert_eq!(source.peek_char(), Some('A'));
         assert_eq!(source.next_char(), Some('A'));
         assert_eq!(source.next_char_if(|char| char == 'e'), None);
         source.next_char();
         assert_eq!(source.next_char_if(|char| char == 'e'), Some('e'));
-        assert_eq!(source.cursor().line, 1);
-        assert_eq!(source.cursor().column, 3);
+        assert_eq!(source.cursor, 2);
         for _ in 0..5 {
             source.next_char();
         }
-        assert_eq!(source.cursor().line, 2);
-        assert_eq!(source.cursor().column, 1);
+        assert_eq!(source.cursor, 7);
         assert_eq!(source.next_token(char::is_alphabetic, '1'), "1demo");
         assert_eq!(source.peek_char(), None);
         assert_eq!(source.next_char(), None);
