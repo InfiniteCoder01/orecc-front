@@ -60,6 +60,12 @@ impl Codebase {
     pub fn warnings(&self) -> usize {
         self.warnings
     }
+
+    /// Clear compilation status
+    pub fn clear(&mut self) {
+        self.warnings = 0;
+        self.errors = 0;
+    }
 }
 
 impl Default for Codebase {
