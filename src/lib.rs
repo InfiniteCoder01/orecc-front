@@ -6,7 +6,6 @@ pub mod codebase;
 pub mod token_reader;
 
 pub use codebase::Codebase;
-pub use codespan_reporting::diagnostic::Diagnostic;
 pub use token_reader::TokenReader;
 
 #[cfg(test)]
