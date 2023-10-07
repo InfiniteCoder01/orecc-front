@@ -1,13 +1,13 @@
 [package]
 name = "orecc-front"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["InfiniteCoder <nayka.0.lobach.01@gmail.com>"]
 description = "A simple compiler frontend utility toolkit"
 readme = "README.md"
 repository = "https://github.com/InfiniteCoder01/orecc-front/"
 license = "MIT"
-keywords = ["api", "elf", "object"]
+keywords = ["compiler", "lexer", "token"]
 categories = [
     "compilers",
     "development-tools::build-utils",
