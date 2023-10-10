@@ -32,14 +32,14 @@ pub fn main() {
                     Some('\\') => match reader.next_char() {
                         Some('n') => string.push('\n'),
                         Some(char) => string.push(char),
-                        None => codebase.emit( // Technically won't happen
+                        None => codebase.emit(
+                            // Technically won't happen
                             Diagnostic::error()
                                 .with_message("expected escape code")
                                 .with_labels(vec![Label::primary(
                                     key,
                                     reader.cursor..reader.cursor + 1,
-                                )
-                                .with_message("here")]),
+                                )]),
                         ),
                     },
 
@@ -55,17 +55,16 @@ pub fn main() {
                                 .with_labels(vec![Label::primary(
                                     key,
                                     reader.cursor..reader.cursor + 1,
-                                )
-                                .with_message("here")]),
+                                )]),
                         );
                         break;
                     }
                 }
             }
-            println!("String {:?}", string);
+            println!("String {string:?}");
         } else if ['(', ')', '{', '}', ';'].contains(&char) {
             // * Operator
-            println!("Operator {}", char);
+            println!("Operator {char}");
         }
     }
 }
